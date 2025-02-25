@@ -596,8 +596,12 @@ export default function DataVisualization() {
     try {
       const response = await fetch(DATASETS[selectedDataset])
       const csvData = await response.text()
-      // const results = Papa.parse<DataPoint>(csvData, { header: true, dynamicTyping: true })
-      const results = Papa.parse(csvData, { header: true, dynamicTyping: true }) as Papa.ParseResult<DataPoint>;
+      //const results = Papa.parse<DataPoint>(csvData, { header: true, dynamicTyping: true })
+      const results = Papa.parse(csvData, { 
+        header: true, 
+        dynamicTyping: true 
+      });
+      //const results = Papa.parse(csvData, { header: true, dynamicTyping: true }) as Papa.ParseResult<DataPoint>;
       setData(results.data)
       setFilteredData(results.data)
 
@@ -608,13 +612,13 @@ export default function DataVisualization() {
 
       toast({
         title: "Data loaded",
-        description: `${selectedDataset} data has been loaded successfully.`,
+        content: `${selectedDataset} data has been loaded successfully.`,//description is not supported so used content
       })
     } catch (error) {
       console.error("Error loading data:", error)
       toast({
         title: "Error",
-        description: "Failed to load data. Please try again.",
+        content: "Failed to load data. Please try again.",
         variant: "destructive",
       })
     } finally {
@@ -637,7 +641,12 @@ export default function DataVisualization() {
 
   const renderChart = () => {
     const ChartComponent = chartType === "bar" ? BarChart : chartType === "scatter" ? ScatterChart : LineChart
-    const DataComponent = chartType === "bar" ? Bar : chartType === "scatter" ? Scatter : Line
+    //const DataComponent = chartType === "bar" ? Bar : chartType === "scatter" ? Scatter : Line
+    const DataComponent = (chartType === "bar"
+      ? Bar
+      : chartType === "scatter"
+      ? Scatter
+      : Line) as React.ComponentType<any>;
 
     return (
       <ResponsiveContainer width="100%" height={400}>
@@ -647,6 +656,13 @@ export default function DataVisualization() {
           <YAxis />
           <Tooltip content={<CustomTooltip />} />
           <Legend />
+          {/* <DataComponent
+            type="monotone"
+            dataKey={yAxis}
+            stroke={chartColor}
+            fill={chartColor}
+            fillOpacity={chartOpacity / 100}
+          /> */}
           <DataComponent
             type="monotone"
             dataKey={yAxis}
@@ -654,6 +670,7 @@ export default function DataVisualization() {
             fill={chartColor}
             fillOpacity={chartOpacity / 100}
           />
+
         </ChartComponent>
       </ResponsiveContainer>
     )
