@@ -562,7 +562,7 @@ import DataFilter from "./DataFilter"
 import CustomTooltip from "./CustomTooltip"
 
 const DATASETS = {
-  leukemia_risk: "/src/data/leukemia_risk.csv",
+  leukemia_risk: "/data/leukemia_risk.csv",
   // Abhi aur add krna hai
 } as const
 
