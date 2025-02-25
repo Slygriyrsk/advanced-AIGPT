@@ -38,24 +38,6 @@ SABOT AI is a sophisticated AI assistant platform that combines conversational c
 - **Toast Notifications**: User feedback system for actions and errors
 
 ## Folder Structure
-Let me address each of these points:
-
-1\. For debugging, I'll explain how to add debugging capabilities to the React project using browser dev tools, React Developer Tools, and VS Code debugging.
-
-2\. For resume points, I'll highlight the key technical features that would be impressive to potential employers.
-
-3\. For the project title, I'll suggest something professional that captures the essence of the application.
-
-4\. For the README file, I'll create a comprehensive document that explains the project, its features, how to set it up, and how to use it.
-
-5\. For the folder structure, I'll outline the typical structure of a React project with the components they've created.
-
-Let me start with creating the README.md file, which will include most of this information.
-
-`</Thinking>`
-
-I'll help you with all of these requests. Let's start with a comprehensive README file that includes the project title, features, folder structure, and setup instructions. Then I'll provide guidance on debugging and what to include in your resume.
-
 ```
 sabot-ai/
 ├── public/
